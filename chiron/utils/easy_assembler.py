@@ -40,6 +40,6 @@ def main():
     bpreads = ['AAGGCCTAGCT','AGGCCTAGCAA','GGCCTAGCTC','AAAGGCCTAGT']
     census,length = simple_assembly(bpreads)
     result = np.argmax(census,axis=0)
-    print result
+    print(result)
 if __name__=='__main__':
     main()
