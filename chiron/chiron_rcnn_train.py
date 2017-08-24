@@ -94,8 +94,8 @@ def train():
             indxs,values,shape = valid_y
             feed_dict = {x:valid_x,seq_length:valid_len/ratio,y_indexs:indxs,y_values:values,y_shape:shape,training:True}
             error_val = sess.run(error,feed_dict = feed_dict)
-            print "Epoch %d, batch number %d, loss: %5.3f edit_distance: %5.3f"\
-            %(train_ds.epochs_completed,train_ds.index_in_epoch,loss_val,error_val)
+            print("Epoch %d, batch number %d, loss: %5.3f edit_distance: %5.3f"\
+            %(train_ds.epochs_completed,train_ds.index_in_epoch,loss_val,error_val))
             saver.save(sess,FLAGS.log_dir+FLAGS.model_name+'/model.ckpt',i)
             summary_str = sess.run(summary, feed_dict=feed_dict)
             summary_writer.add_summary(summary_str, i)

@@ -58,8 +58,8 @@ def train():
             loss_val,_ = sess.run([ctc_loss,opt],feed_dict = {x:batch_x,seq_length:seq_len,y_indexs:indxs,y_values:values,y_shape:shape})
             if i%10 ==0:
                 error_val = sess.run(error,feed_dict = {x:batch_x,seq_length:seq_len,y_indexs:indxs,y_values:values,y_shape:shape})
-                print "Epoch %d, batch number %d, loss: %5.2f edit_distance: %5.2f"\
-                %(train_ds.epochs_completed,train_ds.index_in_epoch,loss_val,error_val)
+                print("Epoch %d, batch number %d, loss: %5.2f edit_distance: %5.2f"\
+                %(train_ds.epochs_completed,train_ds.index_in_epoch,loss_val,error_val))
                 saver.save(sess,"log/cnn/model.ckpt",i)
         saver.save(sess,"log/cnn/final.ckpt")
 def main():
