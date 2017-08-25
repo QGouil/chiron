@@ -19,7 +19,7 @@ def inference(x,seq_length,training):
     cnn_feature = getcnnfeature(x,training = training)
     feashape = cnn_feature.get_shape().as_list()
     ratio = FLAGS.segment_len/feashape[1]
-    logits = rnn_layers(cnn_feature,seq_length/ratio,training,class_n = 5 )
+    logits = rnn_layers(cnn_feature, tf.cast(tf.truediv(tf.cast(seq_length, tf.float32),ratio), tf.int32),training,class_n = 5 )
 #    logits = rnn_layers_one_direction(cnn_feature,seq_length/ratio,training,class_n = 4**FLAGS.k_mer+1 ) 
 #    logits = getcnnlogit(cnn_feature)
     return logits,ratio
